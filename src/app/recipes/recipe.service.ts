@@ -12,25 +12,30 @@ export class RecipeService {
 	recipesChanged = new Subject<Recipe[]>();
 
 	private recipes: Recipe[] = [
-		new Recipe(
-			'Test',
-			'This is a test Recipe',
-			'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg',
-			[
-				new Ingredient('Meat', 1),
-				new Ingredient('Egg', 2)
-			]
-		),
-		new Recipe(
-			'Test1',
-			'This is a test Recipe1',
-			'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg',
-			[
-				new Ingredient('Chicken', 1),
-				new Ingredient('Onion', 2)
-			]
-		)
+		// new Recipe(
+		// 	'Test',
+		// 	'This is a test Recipe',
+		// 	'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg',
+		// 	[
+		// 		new Ingredient('Meat', 1),
+		// 		new Ingredient('Egg', 2)
+		// 	]
+		// ),
+		// new Recipe(
+		// 	'Test1',
+		// 	'This is a test Recipe1',
+		// 	'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg',
+		// 	[
+		// 		new Ingredient('Chicken', 1),
+		// 		new Ingredient('Onion', 2)
+		// 	]
+		// )
 	];
+
+	setRecipes(recipes: Recipe[]) {
+		this.recipes = recipes;
+		this.recipesChanged.next(this.recipes.slice());
+	}
 
 	getRecipes() {
 		return this.recipes.slice(); //get a copy, not itself
